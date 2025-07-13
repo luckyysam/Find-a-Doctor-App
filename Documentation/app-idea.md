@@ -39,3 +39,27 @@ Click on the image to view flowchart on the web
 - Direct search auto complete using Mapbox Search Box API
 
 ## App UI Design draft
+
+### UI sketch on paper
+
+Landing Page
+![Landing Page](./assets/WhatsApp%20Image%202025-07-13%20at%2008.42.10_1ae5eee8.jpg)
+
+FInd a clinic/Symptom Search UI
+![FInd a clinic/Symptom Search UI](./assets/WhatsApp%20Image%202025-07-13%20at%2008.42.12_ef3da09d.jpg)
+
+# Framer UI Designs
+
+I learned how to use Framer on [Framer/Academy](https://www.framer.com/academy/) and published the design via https://courteous-studies-234530.framer.app/
+
+## Landing Page Design
+
+![Landing Page UI Design](./assets/Screenshot%202025-07-13%20174547.png)
+
+## Try Symptom Search
+
+![Try Symptom Search](./assets/Screenshot%202025-07-13%20174636.png)
+
+## Find a Clinic UI
+
+![Find a Clinic UI](./assets/Screenshot%202025-07-13%20174650.png)
