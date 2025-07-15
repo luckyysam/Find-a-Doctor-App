@@ -19,5 +19,10 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // Enforce 2-space indentation
+      'indent': ['error', 2],
+      "no-unused-vars": "error",
+    }
   },
 ])

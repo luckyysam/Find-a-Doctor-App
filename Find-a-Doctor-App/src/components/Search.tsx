@@ -35,7 +35,7 @@ const HealthcareProviderSearch = ({ specialty }: { specialty: string }) => {
       {loading ? (
         <p>Loading nearby doctors...</p>
       ) : (
-          'here'
+        'here'
       )}
     </div>
   );

@@ -3,7 +3,7 @@ import { type AIResponse } from "../types";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const getAIResponse = async (userInput: string): Promise<AIResponse> => {
-    // Input validation
+  // Input validation
   if (!userInput || userInput.trim().length === 0) {
     throw new Error("Please provide a description of your symptoms.");
   }

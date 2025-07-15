@@ -31,15 +31,15 @@ const SymptomInput = () => {
     </form>
 
 
-     {/* Display AI Response */}
-     {result && (
+    {/* Display AI Response */}
+    {result && (
       <>
-      <h1>AI Response</h1>
-      <h2>{result.text}</h2>
-      <HealthcareProviderSearch specialty={result.specialties[0]}/>
+        <h1>AI Response</h1>
+        <h2>{result.text}</h2>
+        <HealthcareProviderSearch specialty={result.specialties[0]}/>
 
       </>
-     )}
+    )}
 
     </>
   );

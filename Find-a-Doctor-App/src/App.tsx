@@ -1,10 +1,12 @@
 import SymptomInput from "./components/SymptomInput"
+import NavBar from "./components/NavBar"
 function App() {
 
   return (
-    <>
-    <SymptomInput/>
-    </>
+    <div className="wrapper">
+      <NavBar/>
+      <SymptomInput/>
+    </div>
   )
 }
 

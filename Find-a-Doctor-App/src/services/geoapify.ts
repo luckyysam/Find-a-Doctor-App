@@ -65,7 +65,7 @@ export const getHealthcareProviders = async (
   const data = await res.json();
 
 
-   // Map each feature to HealthcareProvider interface
+  // Map each feature to HealthcareProvider interface
   const HealthcareProviders: HealthcareProvider[] = (data.features || {}).map((healthcare: GeoapifyFeature) => ({
     properties: {
       name: healthcare.properties?.name,
