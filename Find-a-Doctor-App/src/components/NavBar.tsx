@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
 import { countries } from 'country-data-list';
+import { LocationContext } from '../context/LocationContext';
 
 import logo from '../assets/logo.png'
+import caretDown from '../assets/caret-down.svg'
 
 const allCountries = countries.all
 const NavBar = () => {
@@ -57,6 +59,14 @@ const NavBar = () => {
     setOpenCountries(false);
   };
 
+  const handleUseMyLocation = () => {
+    setSelectedCountry('')
+    setOpenCountries(false)
+  }
+    
+  // IP Geolocation Detection with Geoapify IP API
+  const clientIP = useContext(LocationContext)
+
 
   return (
     <>
@@ -81,31 +91,47 @@ const NavBar = () => {
         </div>
 
         <div className="select-country">
-          <input 
-            ref={inputRef}
-            type="text" 
-            placeholder='Search Country' 
-            value={searchTerm}
-            onChange={handleInputChange} 
-            onFocus={()=> setOpenCountries(true)}
-            autoComplete='off'
-          />
-          {openCountries && (
-            <div className="country-dropdown" ref={dropdownRef}>
-              {filteredCountries.length === 0 ? (
-                <div className="">No countries found</div>
-              ): (
-                filteredCountries.map((country) => (
-                  <div className="" 
-                    key={country.name}
-                    onClick={() => handleCountrySelect(country.name)}
-                  >
-                    {country.name} { country.emoji}
-                  </div>
-                ))
-              ) }
+          <div className="country-container">
+            {/* Ip Geolocation Detection */}
+            <div className="country" onClick={()=> setOpenCountries(true)}>
+              <p>{selectedCountry? selectedCountry : clientIP?.country.names.en}</p>
+              <img src={caretDown} alt="caret-down" />
             </div>
-          )}
+
+            {openCountries && (
+
+              <div className="country-dropdown">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  placeholder='Search Country'
+                  value={searchTerm}
+                  onChange={handleInputChange}
+                  autoComplete='off' />
+              
+                <div className="countries" ref={dropdownRef}>
+                  {filteredCountries.length === 0 ? (
+                    <div className="">No countries found</div>
+                  ) : (
+                    <> 
+                      {/* Use IP */}
+                      <div className="ip-detect" onClick={handleUseMyLocation}> Use my location </div>
+                      {filteredCountries.map((country) => (
+                      
+                        <div className=""
+                          key={country.name}
+                          onClick={() => handleCountrySelect(country.name)}
+                        >
+                          {country.name} {country.emoji}
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </div>
+
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

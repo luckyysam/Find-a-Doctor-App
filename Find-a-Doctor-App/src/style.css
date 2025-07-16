@@ -1,12 +1,11 @@
 :root {
 
-    /* Colors */
-    --FaD-color: hsl(181, 44, 40, 100%);
-    --White: hsl(0, 0, 100, 100%);
-    --Black-300-H: hsl(0, 0, 0, 100%);
-    --Black-200-P: hsl(0, 3, 29, 100%);
-    --Black-100-P: hsl(0, 0, 37, 100%);
-    --Dark-blue: hsl(226, 46, 20, 100%);
+     --FaD-color: rgb(57, 183, 176);   
+    --White: rgb(255, 255, 255);    
+    --Black-300-H: rgb(0, 0, 0);  
+    --Black-200-P: rgb(74, 74, 72);
+    --Black-100-P: rgb(94, 94, 94);
+    --Dark-blue: rgb(22, 32, 54);  
 
 
     /* Font Weight */
@@ -25,7 +24,7 @@
 
 body {
     font-family: 'Satoshi', sans-serif;
-    background-color:var(--White);
+    background-color: var(--White);
 }
 
 h1,
@@ -92,24 +91,60 @@ h3 {
   color: inherit;
 }
 
+.country {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.country img {
+  position: relative;
+  width: 20px;
+  height: 15px;
+}
+
+/* NavBar - Country Drop Down Style */
+
+.select-country {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+
+}
+.country-container.active {
+  display: flex;
+  flex-direction: column;
+  top: 14px;
+  z-index: 60;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--White);
+  border: 2px solid var(--FaD-color);
+}
+
+
+.countries {
+  display: flex;
+     width: 247px;
+  height: 327px;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  padding-inline: 10px;
+}
 
 /* Container for the input */
 .select-country input {
-  width: auto;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  background-color: var(--White);  
+  display: block;
+  padding-inline: 10px;
+  width: 207px;
+  height: 34px;
+  border-radius: 19px;
+  border: 3px solid var(--FaD-color);
   font-weight: var(--Satoshi-Regular);
-  font-size: 1.29rem;
+  font-size: 0.9rem;
+  background-color: var(--White);  
 }
-
-/* Border appears only on focus */
-.select-country input:focus {
-  border: 1.5px solid black;
-  background-color: white;
-}
-
-
 
 
