@@ -1,13 +1,12 @@
 import SymptomInput from "./components/SymptomInput"
 import NavBar from "./components/NavBar"
+import HomePage from "./views/Homepage"
 import { LocationProvider } from "./context/LocationProvider"
 function App() {
 
   return (
     <LocationProvider>
-      <div className="wrapper">
-        <NavBar/>
-      </div>
+      <HomePage/>
     </LocationProvider>
   )
 }

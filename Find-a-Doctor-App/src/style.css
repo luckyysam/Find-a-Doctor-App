@@ -5,7 +5,8 @@
     --Black-300-H: rgb(0, 0, 0);  
     --Black-200-P: rgb(74, 74, 72);
     --Black-100-P: rgb(94, 94, 94);
-    --Dark-blue: rgb(22, 32, 54);  
+    /* --Dark-blue: rgb(22, 32, 54);   */
+    --Dark-blue: rgb(28, 39, 76);  
 
 
     /* Font Weight */
@@ -23,7 +24,7 @@
 }
 
 body {
-    font-family: 'Satoshi', sans-serif;
+    font-family: "Satoshi", "Satoshi Placeholder", sans-serif;
     background-color: var(--White);
 }
 
@@ -34,8 +35,7 @@ h3 {
     margin: 0;
 }
 
-
-.wrapper {
+#root {
     max-inline-size: 1200px;
     margin-inline: auto;
 } 
@@ -104,14 +104,9 @@ h3 {
 }
 
 /* NavBar - Country Drop Down Style */
-
-.select-country {
-    position: absolute;
-    top: 10px;
-    right: 40px;
-
-}
 .country-container.active {
+  position: absolute;
+  right: 10px;
   display: flex;
   flex-direction: column;
   top: 14px;
@@ -126,7 +121,7 @@ h3 {
 
 .countries {
   display: flex;
-     width: 247px;
+  width: 247px;
   height: 327px;
   flex-direction: column;
   gap: 10px;
@@ -145,6 +140,98 @@ h3 {
   font-weight: var(--Satoshi-Regular);
   font-size: 0.9rem;
   background-color: var(--White);  
+}
+
+
+/* Hero Section */
+#hero-section {
+margin-block: 10px;
+}
+
+/* Find-Clinics */
+.find-clinic {
+  display: flex;
+  gap: 32px;
+  max-inline-size: 1120px;
+}
+
+.find-clinic img {
+  display: block;
+  object-position: center center;
+  object-fit: cover;
+}
+
+.find-clinic-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn a {
+  text-decoration: none;
+  color: var(--Dark-blue);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+.find-clinic-btn {
+  display: flex;
+  place-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding-inline: 30px;
+  padding-block: 10px;
+  border-radius: 20px;
+  background-color: var(--White);
+  border: 1px solid var(--Black-300-H) ;
+}
+
+
+/* Try Symptom Search Clinic */
+
+.symptom-search {
+  display: flex;
+  margin-top: 30px;
+
+
+}
+
+.symptom-search-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.symptom-search img {
+  width: 560px;
+  height: 350px;
+}
+
+
+.symptom-btn {
+  width: fit-content;
+}
+
+
+
+
+
+/* Text Styles  */
+
+h1 {
+  font-size: 2.69rem;
+  font-weight: var(--Satoshi-medium);
+}
+p {
+  font-size: 1.29rem;
+  font-weight: var(--Satoshi-Regular);
+}
+
+/* utility Styles */
+.hero-p {
+  font-size: 1.38rem;
+  font-weight: var(--Satoshi-Regular);
 }
 
 

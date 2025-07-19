@@ -29,7 +29,7 @@ const NavBar = () => {
     }
   }, [searchTerm])
 
-  // Close dropdown when clicking outside
+  // Close dropdown and remove active style on country-container when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -38,7 +38,7 @@ const NavBar = () => {
         inputRef.current &&
         !inputRef.current.contains(event.target as Node)
       ) {
-        setOpenCountries(false)
+        handleCloseCountrySelect()
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -56,17 +56,29 @@ const NavBar = () => {
   const handleCountrySelect = (countryName: string) => {
     setSelectedCountry(countryName);
     setSearchTerm(countryName);
-    setOpenCountries(false);
+    handleCloseCountrySelect()
   };
 
   const handleUseMyLocation = () => {
     setSelectedCountry('')
+    handleCloseCountrySelect()
+  }
+
+  const handleCloseCountrySelect = () => {
     setOpenCountries(false)
+    document.querySelector('.country-container')?.classList.remove('active')
+
   }
     
   // IP Geolocation Detection with Geoapify IP API
   const clientIP = useContext(LocationContext)
 
+
+  useEffect(() => {
+    const countryContainer = document.querySelector('.country-container')
+    const countryDropDown = document.querySelector('.country')
+    countryDropDown?.addEventListener('click', () => countryContainer?.classList.add('active') )
+  }, [])
 
   return (
     <>
