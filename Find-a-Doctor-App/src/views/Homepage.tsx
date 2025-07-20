@@ -1,4 +1,6 @@
 import NavBar from "../components/NavBar"
+import Footer from "../components/Footer"
+import SpecialtyCard from '../components/SpecialtyCard'
 import CoupleImg from '../assets/gslvpBQcsewrasKXc8ip1j8pWnQ.avif'
 import ClinicImg from '../assets/QjuNJ8gzqebcwfGzu9ekzNSM.avif'
 
@@ -28,8 +30,8 @@ const HomePage = () => {
         <div className="symptom-search">
 
           <div className="symptom-search-text">
-            <h1>Try Symptom Search</h1>
-            <p>Type your main symptoms or concerns and see how the AI suggests a specialty and finds the right doctor or clinic in your area instantly.</p>
+            <h2>Try Symptom Search</h2>
+            <p className="hero-p">Type your main symptoms or concerns and see how the AI suggests a specialty and finds the right doctor or clinic in your area instantly.</p>
             <button className="symptom-btn btn">Try it Now</button>
           </div>
 
@@ -38,6 +40,26 @@ const HomePage = () => {
 
         </div>
       </section>
+
+
+      <section id="specialties">
+        <div className="list-speciaties">
+          <div className="find-healthcare">
+            <h3>Find Healthcare Services in <span className="country-s">Finland</span> </h3>
+          </div>
+
+          <div className="layout-grid">
+            <SpecialtyCard/>
+            <SpecialtyCard/>
+            <SpecialtyCard/>
+            <SpecialtyCard/>
+            <SpecialtyCard/>
+            <SpecialtyCard/>
+          </div>
+        </div>
+      </section>
+
+      <Footer/>
     </>
   )
 

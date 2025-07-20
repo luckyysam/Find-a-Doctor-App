@@ -1,6 +1,6 @@
 :root {
 
-     --FaD-color: rgb(57, 183, 176);   
+     --FaD-color: rgb(57, 144, 145); 
     --White: rgb(255, 255, 255);    
     --Black-300-H: rgb(0, 0, 0);  
     --Black-200-P: rgb(74, 74, 72);
@@ -169,7 +169,7 @@ margin-block: 10px;
 
 .btn a {
   text-decoration: none;
-  color: var(--Dark-blue);
+  color: var(--FaD-color);
   font-size: 1rem;
   font-weight: 600;
 }
@@ -192,27 +192,118 @@ margin-block: 10px;
 
 .symptom-search {
   display: flex;
-  margin-top: 30px;
-
+  margin-top: 40px;
+  gap: 80px;
 
 }
 
 .symptom-search-text {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
 .symptom-search img {
-  width: 560px;
-  height: 350px;
+  width: 50%;
+  border-radius: 10px;
 }
 
 
 .symptom-btn {
   width: fit-content;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: var(--Satoshi-Regular);
+  background-color: var(--FaD-color);
+  color: var(--White);
+  border-radius: 10px;
+  border: none;
+
 }
 
+
+/* Specialty Section */
+
+#specialties {
+  margin-top: 30px;
+}
+
+.find-healthcare {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 30px;
+  padding: 40px;
+}
+
+/* SepecialtyCard */
+
+.s-container {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 9px;
+  /* justify-content: end; */
+  padding: 20px;
+  width: 312px;
+  height: fit-content;
+  border: 4px solid var(--FaD-color);
+  border-radius: 28px;
+  text-align: center;
+
+
+}
+.s-container p {
+  width: fit-content;
+  font-size: 1rem;
+
+}
+.s-container img {
+  width: 80px;
+}
+
+.view-btn {
+  display: flex;
+ align-items: center;
+}
+
+.view-btn a {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.country-s {
+  color: var(--FaD-color);
+}
+
+
+
+/* Footer */
+
+.f-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-container img {
+  width: 222px;
+  height: 200px;
+}
+
+.f-container p {
+  font-size: 2rem;
+  color: rgba(28, 40, 77, .69);
+}
 
 
 
@@ -220,18 +311,114 @@ margin-block: 10px;
 /* Text Styles  */
 
 h1 {
-  font-size: 2.69rem;
+  font-size: 2.40rem;
   font-weight: var(--Satoshi-medium);
 }
-p {
-  font-size: 1.29rem;
+
+h2 {
+  font-size: 2rem;
   font-weight: var(--Satoshi-Regular);
 }
+h3 {
+  font-size:1.5rem ;
+  font-weight: var(--Satoshi-Regular);
+
+}
+
+p {
+  font-size: 1rem;
+  font-weight: var(--Satoshi-Regular);
+}
+
+
 
 /* utility Styles */
 .hero-p {
-  font-size: 1.38rem;
+  font-size: 1.20rem;
   font-weight: var(--Satoshi-Regular);
 }
 
 
+
+
+/* Tablet View 1199 - 810*/
+@media (min-width: 810px) {
+
+  /* Find Clinics */
+  #hero-section {
+    padding: 20px;
+  }
+
+  .find-clinic img {
+    width: 349px;
+    height: 415px;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+
+  .hero-p {
+    font-size: 1.1rem;
+  }
+
+  
+
+  /* Specialties */
+
+  #specialties {
+    padding: 20px;
+  }
+
+  .layout-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+
+}
+
+/* Phone View 809 */
+@media (min-width: 360px) {
+
+/* Disable nav links visiblity */
+
+
+  #hero-section {
+    padding: 40px;
+  }
+  .find-clinic {
+    flex-direction: column-reverse;
+  }
+
+  .symptom-search {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .symptom-search img {
+    width: 350px;
+    height: 219px;
+  }
+    h1 {
+    font-size: 2rem;
+  }
+
+  .hero-p {
+    font-size: 1.1rem;
+  }
+
+    /* Specialties */
+
+  #specialties {
+    padding: 20px;
+  }
+
+  .layout-grid {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+
+}
