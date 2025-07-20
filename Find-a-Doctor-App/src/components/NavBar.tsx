@@ -39,6 +39,7 @@ const NavBar = () => {
         !inputRef.current.contains(event.target as Node)
       ) {
         handleCloseCountrySelect()
+        document.querySelector('.nav-links-container')?.classList.remove('active')
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -80,6 +81,30 @@ const NavBar = () => {
     countryDropDown?.addEventListener('click', () => countryContainer?.classList.add('active') )
   }, [])
 
+
+  // Mobile Nav Toggle 
+  useEffect(() => {
+    const button = document.querySelector('.mobile-nav-toggle')
+    const navContainer = document.querySelector('.nav-links-container')
+    button?.addEventListener('click', () => {
+    
+      if (navContainer?.hasAttribute('active')) {
+        navContainer?.classList.remove('active')
+      } else {
+        // change imageurl 
+        // open tab of nav links 
+        console.log('HELLO')
+        navContainer?.classList.add('active')
+      }
+
+     
+      
+    })
+  }, [])
+
+  
+
+
   return (
     <>
       <div className="container-nav">
@@ -90,13 +115,11 @@ const NavBar = () => {
 
           <div className="nav-links-container">
             <div className="nav-links-inner">
-              <div className="nav-link">
-                <p><a href="./search-clinic">Find Clinics</a></p>
-              </div>
 
-              <div className="nav-link">
-                <p><a href="./find-a-doctor">Try Symptom Search</a></p>
-              </div>
+              <ul className='nav-link'>
+                <li><a href="./search-clinic">Find Clinics</a></li>
+                <li><a href="./find-a-doctor">Try Symptom Search</a></li>
+              </ul>
             </div>
           </div>
 
@@ -145,6 +168,9 @@ const NavBar = () => {
             )}
           </div>
         </div>
+
+        <button className="mobile-nav-toggle"></button>
+
       </div>
     </>
   )
