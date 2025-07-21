@@ -28,6 +28,7 @@ export const getClientLocation = async (): Promise<ClientLocation> => {
       },
     },
     country: {
+      iso_code: data.country?.iso_code,
       names: {
         en: data.country?.names?.en,
       },

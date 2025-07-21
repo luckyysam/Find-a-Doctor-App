@@ -1,0 +1,63 @@
+{
+  "navbar": {
+    "find_clinics_navlink": "Etsi klinikoita",
+    "symptom_search_navlink": "Kokeile oirehakua",
+    "client_country": ""
+  },
+  "hero-section": {
+    "find_clinic": {
+      "h1": "Autamme sinua löytämään hoitoa",
+      "p": "Etsi lähimmät lääkärit ja klinikat ajantasaisilla tiedoilla ja karttaintegraatiolla.",
+      "button_text": "Etsi klinikoita"
+    },
+    "symptom_search": {
+      "h2": "Kokeile oirehakua",
+      "p": "Kirjoita pääasialliset oireesi tai huolesi, ja katso kuinka tekoäly ehdottaa erikoisalaa ja löytää oikean lääkärin tai klinikan alueeltasi heti.",
+      "button_text": "Kokeile nyt"
+    }
+  },
+  "specialties_section": {
+    "h3": "Etsi terveyspalveluita alueelta ",
+    "grid_layout": {
+      "0": {
+        "icon_link": "",
+        "h3": "Pediatria",
+        "p": "Seuraa lapsesi kasvua ja kehitystä tarkasti varmistaaksesi terveyden jokaisessa vaiheessa.",
+        "a": "Näytä terveyspalvelut"
+      },
+      "1": {
+        "icon_link": "",
+        "h3": "Gastroenterologia",
+        "p": "Kattava ruoansulatusjärjestelmän hoito yksilöllisesti ja tarkasti.",
+        "a": "Näytä terveyspalvelut"
+      },
+      "2": {
+        "icon_link": "",
+        "h3": "Kardiologia",
+        "p": "Huippuluokan sydänhoitoa, joka keskittyy sydän- ja verenkiertoelimistön terveyteesi asiantuntemuksella ja omistautumisella.",
+        "a": "Näytä terveyspalvelut"
+      },
+      "3": {
+        "icon_link": "",
+        "h3": "Ortopedia",
+        "p": "Saat hoitoa luuston ja lihasten hyvinvointiin kehittyneillä ja yksilöllisillä hoidoilla.",
+        "a": "Näytä terveyspalvelut"
+      },
+      "4": {
+        "icon_link": "",
+        "h3": "Neurologia",
+        "p": "Erikoistunutta hoitoa aivojen ja hermoston terveydelle aina edistyksellisesti ja myötätuntoisesti.",
+        "a": "Näytä terveyspalvelut"
+      },
+      "5": {
+        "icon_link": "",
+        "h3": "Yleishoito",
+        "p": "Luotettavaa perusterveydenhuoltoa, joka tukee hyvinvointiasi kaikissa elämänvaiheissa.",
+        "a": "Näytä terveyspalvelut"
+      }
+    }
+  },
+  "footer": {
+    "p": "Etsi hoitoa"
+  }
+}

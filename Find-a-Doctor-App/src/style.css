@@ -24,8 +24,8 @@
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+ul,
+ol{
   list-style: none;
 }
 
@@ -45,6 +45,8 @@ h3 {
     max-inline-size: 1200px;
     margin-inline: auto;
 } 
+
+
 
 /* NavBar */
 .container-nav {
@@ -86,6 +88,10 @@ h3 {
   display: flex;
   gap: 24px;
   padding: 0.5rem 1rem;
+}
+.nav-link {
+  display: flex;
+  gap: 20px;
 }
 
 .nav-link p {
@@ -348,16 +354,18 @@ p {
 
 
 
+
 /* Tablet View 1199 - 810*/
-@media (min-width: 810px) {
+
+@media (min-width: 810px) and  (max-width: 1199px) {
 
   /* Find Clinics */
   #hero-section {
-    padding: 20px;
+    padding-inline: 20px;
   }
 
   .find-clinic img {
-    width: 349px;
+    /* width: 349px; */
     height: 415px;
     border-radius: 10px;
   }
@@ -386,8 +394,9 @@ p {
 
 }
 
+
 /* Phone View 809 */
-@media (min-width: 360px) {
+@media (max-width: 809px) {
 
 /* Disable nav links visiblity */
 
@@ -395,22 +404,30 @@ p {
     display: none;
   }
 
+  .nav-links-inner {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  .nav-link {
+    display: grid;
+    gap: 5px;
+  }
   .nav-links-container.active  {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 4rem;
-    left: 2rem;
-    border: 1px solid var(--FaD-color);
-    width: 360px
+    /* left: 2rem; */
+    border-bottom: 1px solid var(--FaD-color);
+    width: 100%;
+    z-index: 5;
+    padding-inline: 20px;
+    padding-block-end: 5px;
   }
   
   .container-nav {
     justify-content: flex-start;
   }
-
-  /* .mobile-nav-toggle {
-    align-self: flex-end;
-  } */
 
   .mobile-nav-toggle {
     display: block;
@@ -421,16 +438,20 @@ p {
     border: 0;
     padding: 0.5em;
     background: transparent;
-    background-image: url('./assets/icon-hamburger.svg');
+    background-image: url('./assets/list.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     aspect-ratio: 1;
   }
 
+  .mobile-nav-toggle.active {
+    background-image: url('./assets/x.svg');
+  }
+
 
   #hero-section {
-    padding: 40px;
+    padding-inline: 40px;
   }
   .find-clinic {
     flex-direction: column-reverse;
@@ -466,3 +487,5 @@ p {
 
 
 }
+
+

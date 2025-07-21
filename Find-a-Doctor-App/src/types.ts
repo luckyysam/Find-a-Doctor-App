@@ -6,6 +6,7 @@ export interface ClientLocation {
     }
   }
   country: {
+    iso_code: string
     names: {
       en: string
     }
@@ -73,4 +74,11 @@ export interface GeoapifyFeature {
 export interface AIResponse {
     text: string
     specialties: string[]
+}
+
+export interface SpecialtyCardContent {
+ icon_link:string
+ h3:string
+ p:string 
+ a:string
 }

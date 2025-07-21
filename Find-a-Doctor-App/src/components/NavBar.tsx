@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { countries } from 'country-data-list';
 import { LocationContext } from '../context/LocationContext';
 
@@ -68,12 +70,11 @@ const NavBar = () => {
   const handleCloseCountrySelect = () => {
     setOpenCountries(false)
     document.querySelector('.country-container')?.classList.remove('active')
-
   }
     
-  // IP Geolocation Detection with Geoapify IP API
+  // DIsplay client Location with Geoapify IP API
   const clientIP = useContext(LocationContext)
-
+  const { t } = useTranslation();
 
   useEffect(() => {
     const countryContainer = document.querySelector('.country-container')
@@ -81,25 +82,38 @@ const NavBar = () => {
     countryDropDown?.addEventListener('click', () => countryContainer?.classList.add('active') )
   }, [])
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [ openNav, setOpenNav] = useState<boolean>(false)
+
 
   // Mobile Nav Toggle 
   useEffect(() => {
     const button = document.querySelector('.mobile-nav-toggle')
     const navContainer = document.querySelector('.nav-links-container')
-    button?.addEventListener('click', () => {
-    
-      if (navContainer?.hasAttribute('active')) {
-        navContainer?.classList.remove('active')
-      } else {
-        // change imageurl 
-        // open tab of nav links 
-        console.log('HELLO')
-        navContainer?.classList.add('active')
-      }
 
+    if (!button || !navContainer) return;
+
+    const handleToggle = () => {
+      setOpenNav(prevOpenNav => {
+        if (prevOpenNav) {
+          navContainer.classList.remove('active')
+          button.classList.remove('active')
+        }
+        else {
+          navContainer.classList.add('active')
+          button.classList.add('active')
+        }
+
+        return !prevOpenNav
+      })
+    }
      
-      
-    })
+    button?.addEventListener('click', handleToggle)
+
+    // Cleanup to avoid duplicate listeners in Strict Mode
+    return () => {
+      button.removeEventListener('click', handleToggle)
+    }
   }, [])
 
   
@@ -117,12 +131,11 @@ const NavBar = () => {
             <div className="nav-links-inner">
 
               <ul className='nav-link'>
-                <li><a href="./search-clinic">Find Clinics</a></li>
-                <li><a href="./find-a-doctor">Try Symptom Search</a></li>
+                <li><a href="./search-clinic">{t('navbar.find_clinics_navlink')}</a></li>
+                <li><a href="./find-a-doctor">{t('navbar.symptom_search_navlink')}</a></li>
               </ul>
             </div>
           </div>
-
         </div>
 
         <div className="select-country">

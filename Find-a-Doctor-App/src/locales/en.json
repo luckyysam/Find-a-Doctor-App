@@ -1,0 +1,63 @@
+{
+  "navbar": {
+    "find_clinics_navlink": "Find Clinics",
+    "symptom_search_navlink": "Try Symptom Search",
+    "client_country": ""
+  },
+  "hero-section": {
+    "find_clinic": {
+        "h1": "We Help You Find Care",
+        "p": "Find doctors and clinics nearest to you, with up-to-date details and map integration.",
+        "button_text": "Search Clinics"
+    },
+    "symptom_search": {
+        "h2": "Try Symptom Search",
+        "p": "Type your main symptoms or concerns and see how the AI suggests a specialty and finds the right doctor or clinic in your area instantly.",
+        "button_text": "Try it Now"
+    }
+  },
+  "specialties_section": {
+    "h3" : "Find Healthcare Services in ",
+    "grid_layout": {
+        "0": {
+            "icon_link": "",
+            "h3": "Pediatrics",
+            "p": "Monitor your child's growth and development closely to ensure their health at every stage.",
+            "a": "View Healthcare"
+        },
+        "1": {
+            "icon_link": "",
+            "h3": "Gastroenterology",
+            "p": "Comprehensive care for digestive health to address issues with precision and personalized attention.",
+            "a": "View Healthcare"
+        },
+        "2": {
+            "icon_link": "",
+            "h3": "Cardiology",
+            "p": "State-of-the-art heart care focused on your cardiovascular health with expertise and dedication.",
+            "a": "View Healthcare"
+        },
+        "3": {
+            "icon_link": "",
+            "h3": "Orthopedics",
+            "p": "Receive care for bone and muscle health with advanced treatments tailored to your needs.",
+            "a": "View Healthcare"
+        },
+        "4": {
+            "icon_link": "",
+            "h3": "Neurology",
+            "p": "Specialized treatments for brain and nerve health, ensuring advanced and compassionate care always.",
+            "a": "View Healthcare"
+        },
+        "5": {
+            "icon_link": "",
+            "h3": "General care",
+            "p": "Reliable primary healthcare services designed to maintain your well-being at every stage of life.",
+            "a": "View Healthcare"
+        }
+    }
+  },
+  "footer": {
+    "p": "Find Care"
+  }
+}

@@ -1,18 +1,22 @@
 import pediatricsSVG from '../assets/pediatrics.svg'
+import { useTranslation } from 'react-i18next'
+interface SpecialtyCardProps {
+  idx: string;
+}
 
+const SpecialtyCard = ({idx}: SpecialtyCardProps) => {
 
-const SpecialtyCard = () => {
-
+  const { t }  = useTranslation()
   return (
     <>
       <div className="s-container">
         <img src={pediatricsSVG} alt="" />
-        <h3>Pediatrics</h3>
-        <p>Monitor your child's growth and development closely to ensure their health at every stage.</p>
+        <h3>{t(`specialties_section.grid_layout.${idx}.h3`)}</h3>
+        <p>{t(`specialties_section.grid_layout.${idx}.p`)}</p>
         <div className="view-btn">
 
           <a href=""> 
-            View Heathcare <img src="" alt="" /></a>
+            {t(`specialties_section.grid_layout.${idx}.a`)} <img src="" alt="" /></a>
           
         </div>
       </div>
