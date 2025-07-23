@@ -4,12 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { LocationContext } from '../context/LocationContext';
 import { setIpLocation } from '../services/appLang';
 
-import { type ClientIPLocation, type Language, type languageContent } from '../types';
+import { type Language, type languageContent } from '../types';
 
 import languages from '../locales/languages.json'
 import { setAppLanguage } from '../services/appLang';
 
-// console.log("Languages ", languages)
 import logo from '../assets/logo.png'
 import caretDown from '../assets/caret-down.svg'
 
@@ -75,7 +74,7 @@ const NavBar = () => {
 
   const handleCloseLanguageSelect = () => {
     setOpenLanguage(false)
-    document.querySelector('.country-container')?.classList.remove('active')
+    document.querySelector('.lang-container')?.classList.remove('active')
   }
     
   // DIsplay client Location with Geoapify IP API
@@ -83,8 +82,8 @@ const NavBar = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const countryContainer = document.querySelector('.country-container')
-    const countryDropDown = document.querySelector('.country')
+    const countryContainer = document.querySelector('.lang-container')
+    const countryDropDown = document.querySelector('.language')
     countryDropDown?.addEventListener('click', () => countryContainer?.classList.add('active') )
   }, [])
 
@@ -142,26 +141,26 @@ const NavBar = () => {
           </div>
         </div>
 
-        <div className="select-country">
-          <div className="country-container">
+        <div className="select-language">
+          <div className="lang-container">
             {/* Ip Geolocation Detection */}
-            <div className="country" onClick={()=> setOpenLanguage(true)}>
+            <div className="language" onClick={()=> setOpenLanguage(true)}>
               <p>{selectedLanguage ? selectedLanguage?.language_code : clientIP?.country.iso_code}</p>
               <img src={caretDown} alt="caret-down" />
             </div>
 
             {openLanguage && (
 
-              <div className="country-dropdown">
+              <div className="languages-dropdown">
                 <input
                   ref={inputRef}
                   type="text"
-                  placeholder='Search Country'
+                  placeholder='Search language'
                   value={searchTerm}
                   onChange={handleInputChange}
                   autoComplete='off' />
               
-                <div className="countries" ref={dropdownRef}>
+                <div className="languages" ref={dropdownRef}>
                   {languages.length === 0 ? (
                     <div className="">No countries found</div>
                   ) : (
@@ -173,7 +172,7 @@ const NavBar = () => {
                       </div>
                       {languages.map((language) => (
                       
-                        <div className="d-country"
+                        <div className="d-lang"
                           key={language.language}
                           onClick={() => handleLanguageSelect(language)}
                         >
