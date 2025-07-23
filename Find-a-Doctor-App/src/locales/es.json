@@ -1,0 +1,63 @@
+{
+  "navbar": {
+    "find_clinics_navlink": "Buscar Clínicas",
+    "symptom_search_navlink": "Probar Búsqueda de Síntomas",
+    "client_country": ""
+  },
+  "hero-section": {
+    "find_clinic": {
+      "h1": "Te Ayudamos a Encontrar Atención",
+      "p": "Encuentra médicos y clínicas cerca de ti, con información actualizada e integración de mapas.",
+      "button_text": "Buscar Clínicas"
+    },
+    "symptom_search": {
+      "h2": "Probar Búsqueda de Síntomas",
+      "p": "Escribe tus principales síntomas o preocupaciones y observa cómo la IA sugiere una especialidad y encuentra al médico o clínica adecuada en tu área al instante.",
+      "button_text": "Pruébalo Ahora"
+    }
+  },
+  "specialties_section": {
+    "h3": "Encuentra Servicios de Salud en ",
+    "grid_layout": {
+      "0": {
+        "icon_link": "pediatrics.svg",
+        "h3": "Pediatría",
+        "p": "Supervisa el crecimiento y desarrollo de tu hijo de cerca para asegurar su salud en cada etapa.",
+        "a": "Ver Atención Médica"
+      },
+      "1": {
+        "icon_link": "Gastroenterology.svg",
+        "h3": "Gastroenterología",
+        "p": "Atención integral para la salud digestiva, abordando los problemas con precisión y atención personalizada.",
+        "a": "Ver Atención Médica"
+      },
+      "2": {
+        "icon_link": "Cardiology.svg",
+        "h3": "Cardiología",
+        "p": "Atención cardíaca de vanguardia enfocada en tu salud cardiovascular con experiencia y dedicación.",
+        "a": "Ver Atención Médica"
+      },
+      "3": {
+        "icon_link": "Orthopedics.svg",
+        "h3": "Ortopedia",
+        "p": "Recibe atención para la salud ósea y muscular con tratamientos avanzados adaptados a tus necesidades.",
+        "a": "Ver Atención Médica"
+      },
+      "4": {
+        "icon_link": "Neurology.svg",
+        "h3": "Neurología",
+        "p": "Tratamientos especializados para la salud cerebral y nerviosa, asegurando siempre una atención avanzada y compasiva.",
+        "a": "Ver Atención Médica"
+      },
+      "5": {
+        "icon_link": "General-care.svg",
+        "h3": "Atención general",
+        "p": "Servicios de atención primaria confiables diseñados para mantener tu bienestar en cada etapa de la vida.",
+        "a": "Ver Atención Médica"
+      }
+    }
+  },
+  "footer": {
+    "p": "Encontrar Atención"
+  }
+}

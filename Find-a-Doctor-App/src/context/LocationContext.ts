@@ -1,4 +1,4 @@
 import { createContext } from "react";
-import { type ClientLocation } from "../types";
+import { type ClientIPLocation } from "../types";
 
-export const LocationContext = createContext<ClientLocation | null>(null);
+export const LocationContext = createContext<ClientIPLocation | null>(null);

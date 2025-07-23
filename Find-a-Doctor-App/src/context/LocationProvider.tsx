@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { LocationContext } from "./LocationContext";
 import { getClientLocation } from "../services/geoapify";
-import { type ClientLocation } from "../types";
-import { setupAppLanguage } from "../services/appLang";
+import { type ClientIPLocation } from "../types";
+import { setAppLanguage } from "../services/appLang";
 
 interface LocationProviderProps {
   children: React.ReactNode;
@@ -10,9 +10,8 @@ interface LocationProviderProps {
 const LOCAL_STORAGE_KEY = import.meta.env.VITE_LOCAL_STORAGE_KEY
 
 export const LocationProvider: React.FC<LocationProviderProps> = ({ children }) => {
-  const [location, setLocation] = useState<ClientLocation | null>(null);
+  const [location, setLocation] = useState<ClientIPLocation | null>(null);
 
-  
   useEffect(() => {
     // Try to load from sessionStorage first
     const cached = sessionStorage.getItem(LOCAL_STORAGE_KEY);
@@ -20,7 +19,7 @@ export const LocationProvider: React.FC<LocationProviderProps> = ({ children }) 
       try {
         setLocation(JSON.parse(cached));
         // Auto page translation with client IP
-        setupAppLanguage(JSON.parse(cached))
+        setAppLanguage(JSON.parse(cached))
 
         return;
       } catch (error) {
@@ -34,10 +33,11 @@ export const LocationProvider: React.FC<LocationProviderProps> = ({ children }) 
         const clientLocation = await getClientLocation();
         setLocation(clientLocation);
         // Auto page translation with client IP
-        setupAppLanguage(clientLocation)
+        setAppLanguage(clientLocation)
         sessionStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(clientLocation));
-      } catch {
+      } catch (e) {
         setLocation(null);
+        console.error('error fetching location', e)
       }
     };
     fetchLocation();

@@ -1,0 +1,63 @@
+{
+  "navbar": {
+    "find_clinics_navlink": "Vind Klinieken",
+    "symptom_search_navlink": "Probeer Symptoomzoeker",
+    "client_country": ""
+  },
+  "hero-section": {
+    "find_clinic": {
+      "h1": "Wij Helpen U Zorg Te Vinden",
+      "p": "Vind artsen en klinieken bij u in de buurt, met actuele gegevens en kaartintegratie.",
+      "button_text": "Zoek Klinieken"
+    },
+    "symptom_search": {
+      "h2": "Probeer Symptoomzoeker",
+      "p": "Typ uw belangrijkste symptomen of zorgen in en zie hoe de AI een specialisme voorstelt en direct de juiste arts of kliniek in uw omgeving vindt.",
+      "button_text": "Probeer het Nu"
+    }
+  },
+  "specialties_section": {
+    "h3": "Vind Zorgdiensten in ",
+    "grid_layout": {
+      "0": {
+        "icon_link": "pediatrics.svg",
+        "h3": "Kindergeneeskunde",
+        "p": "Houd de groei en ontwikkeling van uw kind nauwlettend in de gaten om hun gezondheid in elke fase te waarborgen.",
+        "a": "Bekijk Zorg"
+      },
+      "1": {
+        "icon_link": "Gastroenterology.svg",
+        "h3": "Gastro-enterologie",
+        "p": "Uitgebreide zorg voor spijsverteringsgezondheid om problemen nauwkeurig en persoonlijk aan te pakken.",
+        "a": "Bekijk Zorg"
+      },
+      "2": {
+        "icon_link": "Cardiology.svg",
+        "h3": "Cardiologie",
+        "p": "Geavanceerde hartzorg gericht op uw cardiovasculaire gezondheid met expertise en toewijding.",
+        "a": "Bekijk Zorg"
+      },
+      "3": {
+        "icon_link": "Orthopedics.svg",
+        "h3": "Orthopedie",
+        "p": "Ontvang zorg voor bot- en spiergezondheid met geavanceerde behandelingen op maat.",
+        "a": "Bekijk Zorg"
+      },
+      "4": {
+        "icon_link": "Neurology.svg",
+        "h3": "Neurologie",
+        "p": "Gespecialiseerde behandelingen voor hersen- en zenuwgezondheid, altijd met geavanceerde en zorgzame zorg.",
+        "a": "Bekijk Zorg"
+      },
+      "5": {
+        "icon_link": "General-care.svg",
+        "h3": "Algemene zorg",
+        "p": "Betrouwbare eerstelijnszorg ontworpen om uw welzijn in elke levensfase te behouden.",
+        "a": "Bekijk Zorg"
+      }
+    }
+  },
+  "footer": {
+    "p": "Vind Zorg"
+  }
+}

@@ -1,33 +1,37 @@
 import { useEffect, useRef, useState, useContext } from 'react';
+import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
-
-import { countries } from 'country-data-list';
 import { LocationContext } from '../context/LocationContext';
+import { setIpLocation } from '../services/appLang';
 
+import { type ClientIPLocation, type Language, type languageContent } from '../types';
+
+import languages from '../locales/languages.json'
+import { setAppLanguage } from '../services/appLang';
+
+// console.log("Languages ", languages)
 import logo from '../assets/logo.png'
 import caretDown from '../assets/caret-down.svg'
 
-const allCountries = countries.all
-const NavBar = () => {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [openCountries, setOpenCountries] = useState<boolean>(false)
-  const [filteredCountries, setFilteredCountries] = useState(allCountries)
-  const [selectedCountry, setSelectedCountry] = useState<string>('')
+const allLanguages: Language  = languages 
 
+const NavBar = () => {  
+  const [searchTerm, setSearchTerm] = useState('')
+  const [openLanguage, setOpenLanguage] = useState<boolean>(false)
+  const [languages, setLanguages] = useState<Language>(allLanguages)
+  const [selectedLanguage, setSelectedLanguage] = useState<languageContent | null >(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLInputElement>(null)
 
   // Filter countries as user types
   useEffect(() => {
     if (searchTerm.trim() === ''){
-      setFilteredCountries(allCountries)
+      setLanguages(allLanguages)
     } else {
-      setFilteredCountries(
-        allCountries.filter(country => 
-          country.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+      setLanguages(
+        allLanguages.filter( lang => 
+          lang.language.toLowerCase().includes(searchTerm.toLowerCase()))
       )
-
     }
   }, [searchTerm])
 
@@ -40,7 +44,7 @@ const NavBar = () => {
         inputRef.current &&
         !inputRef.current.contains(event.target as Node)
       ) {
-        handleCloseCountrySelect()
+        handleCloseLanguageSelect()
         document.querySelector('.nav-links-container')?.classList.remove('active')
       }
     }
@@ -53,22 +57,24 @@ const NavBar = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-    setOpenCountries(true);
+    setOpenLanguage(true);
   };
 
-  const handleCountrySelect = (countryName: string) => {
-    setSelectedCountry(countryName);
-    setSearchTerm(countryName);
-    handleCloseCountrySelect()
+  const handleLanguageSelect = (language: languageContent) => {
+    setSelectedLanguage(language);
+    setAppLanguage(language) // Language Content
+    setSearchTerm(language.language);
+    handleCloseLanguageSelect()
   };
 
   const handleUseMyLocation = () => {
-    setSelectedCountry('')
-    handleCloseCountrySelect()
+    setSelectedLanguage(null)
+    setIpLocation() // setIpLocation will call setAppLanguage with ClientIPLocation
+    handleCloseLanguageSelect()
   }
 
-  const handleCloseCountrySelect = () => {
-    setOpenCountries(false)
+  const handleCloseLanguageSelect = () => {
+    setOpenLanguage(false)
     document.querySelector('.country-container')?.classList.remove('active')
   }
     
@@ -117,22 +123,20 @@ const NavBar = () => {
   }, [])
 
   
-
-
   return (
     <>
       <div className="container-nav">
         <div className="logo-nav-links">
-          <a href="/" className="logo-wrapper">
+          <Link to="/" className="logo-wrapper">
             <img src={logo} alt="FaD logo" />
-          </a>
+          </Link>
 
           <div className="nav-links-container">
             <div className="nav-links-inner">
 
               <ul className='nav-link'>
-                <li><a href="./search-clinic">{t('navbar.find_clinics_navlink')}</a></li>
-                <li><a href="./find-a-doctor">{t('navbar.symptom_search_navlink')}</a></li>
+                <li><Link to="./search-clinic">{t('navbar.find_clinics_navlink')}</Link></li>
+                <li><Link to="./find-a-doctor">{t('navbar.symptom_search_navlink')}</Link></li>
               </ul>
             </div>
           </div>
@@ -141,12 +145,12 @@ const NavBar = () => {
         <div className="select-country">
           <div className="country-container">
             {/* Ip Geolocation Detection */}
-            <div className="country" onClick={()=> setOpenCountries(true)}>
-              <p>{selectedCountry? selectedCountry : clientIP?.country.names.en}</p>
+            <div className="country" onClick={()=> setOpenLanguage(true)}>
+              <p>{selectedLanguage ? selectedLanguage?.language_code : clientIP?.country.iso_code}</p>
               <img src={caretDown} alt="caret-down" />
             </div>
 
-            {openCountries && (
+            {openLanguage && (
 
               <div className="country-dropdown">
                 <input
@@ -158,19 +162,22 @@ const NavBar = () => {
                   autoComplete='off' />
               
                 <div className="countries" ref={dropdownRef}>
-                  {filteredCountries.length === 0 ? (
+                  {languages.length === 0 ? (
                     <div className="">No countries found</div>
                   ) : (
                     <> 
                       {/* Use IP */}
-                      <div className="ip-detect" onClick={handleUseMyLocation}> Use my location </div>
-                      {filteredCountries.map((country) => (
+                      <div className="ip-detect" onClick={handleUseMyLocation}> 
+                        <p>Use my location</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M240,120H215.63A88.13,88.13,0,0,0,136,40.37V16a8,8,0,0,0-16,0V40.37A88.13,88.13,0,0,0,40.37,120H16a8,8,0,0,0,0,16H40.37A88.13,88.13,0,0,0,120,215.63V240a8,8,0,0,0,16,0V215.63A88.13,88.13,0,0,0,215.63,136H240a8,8,0,0,0,0-16ZM128,200a72,72,0,1,1,72-72A72.08,72.08,0,0,1,128,200Zm0-112a40,40,0,1,0,40,40A40,40,0,0,0,128,88Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,152Z"></path></svg>
+                      </div>
+                      {languages.map((language) => (
                       
-                        <div className=""
-                          key={country.name}
-                          onClick={() => handleCountrySelect(country.name)}
+                        <div className="d-country"
+                          key={language.language}
+                          onClick={() => handleLanguageSelect(language)}
                         >
-                          {country.name} {country.emoji}
+                          {language.language}
                         </div>
                       ))}
                     </>

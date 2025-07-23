@@ -50,7 +50,7 @@ const HomePage = () => {
       <section id="specialties">
         <div className="list-speciaties">
           <div className="find-healthcare">
-            <h3>{t('specialties_section.h3')} <span className="country-s">{clientCountry?.country.names.en}</span> </h3>
+            <h3>{t('specialties_section.h3')} <span className="country-s">{clientCountry?.country?.name_native}</span> </h3>
           </div>
 
           <div className="layout-grid">

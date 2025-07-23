@@ -20,37 +20,37 @@
     "h3" : "Find Healthcare Services in ",
     "grid_layout": {
         "0": {
-            "icon_link": "",
+            "icon_link": "pediatrics.svg",
             "h3": "Pediatrics",
             "p": "Monitor your child's growth and development closely to ensure their health at every stage.",
             "a": "View Healthcare"
         },
         "1": {
-            "icon_link": "",
+            "icon_link": "Gastroenterology.svg",
             "h3": "Gastroenterology",
             "p": "Comprehensive care for digestive health to address issues with precision and personalized attention.",
             "a": "View Healthcare"
         },
         "2": {
-            "icon_link": "",
+            "icon_link": "Cardiology.svg",
             "h3": "Cardiology",
             "p": "State-of-the-art heart care focused on your cardiovascular health with expertise and dedication.",
             "a": "View Healthcare"
         },
         "3": {
-            "icon_link": "",
+            "icon_link":  "Orthopedics.svg",
             "h3": "Orthopedics",
             "p": "Receive care for bone and muscle health with advanced treatments tailored to your needs.",
             "a": "View Healthcare"
         },
         "4": {
-            "icon_link": "",
+            "icon_link": "Neurology.svg",
             "h3": "Neurology",
             "p": "Specialized treatments for brain and nerve health, ensuring advanced and compassionate care always.",
             "a": "View Healthcare"
         },
         "5": {
-            "icon_link": "",
+            "icon_link": "General-care.svg",
             "h3": "General care",
             "p": "Reliable primary healthcare services designed to maintain your well-being at every stage of life.",
             "a": "View Healthcare"

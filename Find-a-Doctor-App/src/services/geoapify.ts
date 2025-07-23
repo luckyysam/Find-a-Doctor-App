@@ -1,4 +1,4 @@
-import { type ClientLocation, type ProviderResults, type HealthcareProvider , type GeoapifyFeature} from "../types";
+import { type ClientIPLocation, type ProviderResults, type HealthcareProvider , type GeoapifyFeature} from "../types";
 
 const apiKey = import.meta.env.VITE_GEOAPIFY_TOKEN;
 
@@ -9,7 +9,7 @@ const endpoints = {
 
 
 // Get user location based on IP
-export const getClientLocation = async (): Promise<ClientLocation> => {
+export const getClientLocation = async (): Promise<ClientIPLocation> => {
   const url = `${endpoints.ipGeo}&apiKey=${apiKey}`;
 
   const res = await fetch(url, {
@@ -21,6 +21,8 @@ export const getClientLocation = async (): Promise<ClientLocation> => {
 
   const data = await res.json();
 
+  console.log('DATA', data)
+
   return {
     city: {
       names: {
@@ -29,9 +31,7 @@ export const getClientLocation = async (): Promise<ClientLocation> => {
     },
     country: {
       iso_code: data.country?.iso_code,
-      names: {
-        en: data.country?.names?.en,
-      },
+      name_native: data.country?.name_native
     },
     ip: data.ip,
     location: {
@@ -102,7 +102,7 @@ export const getHealthcareProviders = async (
       coordinates: healthcare.geometry?.coordinates,
     }
   }));
-  console.log('HEALTHCARE PROVIDERS', HealthcareProviders)
+  // console.log('HEALTHCARE PROVIDERS', HealthcareProviders)
 
   return { HealthcareProviders };
 

@@ -1,0 +1,63 @@
+{
+  "navbar": {
+    "find_clinics_navlink": "Kliniken finden",
+    "symptom_search_navlink": "Symptom-Suche ausprobieren",
+    "client_country": ""
+  },
+  "hero-section": {
+    "find_clinic": {
+      "h1": "Wir helfen Ihnen, die richtige Versorgung zu finden",
+      "p": "Finden Sie Ärzte und Kliniken in Ihrer Nähe mit aktuellen Informationen und Kartenintegration.",
+      "button_text": "Kliniken suchen"
+    },
+    "symptom_search": {
+      "h2": "Symptom-Suche ausprobieren",
+      "p": "Geben Sie Ihre wichtigsten Symptome oder Anliegen ein und sehen Sie, wie die KI ein Fachgebiet vorschlägt und sofort den passenden Arzt oder die passende Klinik in Ihrer Nähe findet.",
+      "button_text": "Jetzt ausprobieren"
+    }
+  },
+  "specialties_section": {
+    "h3": "Finden Sie Gesundheitsdienste in ",
+    "grid_layout": {
+      "0": {
+        "icon_link": "../assets/pediatrics.svg",
+        "h3": "Pädiatrie",
+        "p": "Überwachen Sie das Wachstum und die Entwicklung Ihres Kindes genau, um seine Gesundheit in jeder Phase sicherzustellen.",
+        "a": "Gesundheitsdienst anzeigen"
+      },
+      "1": {
+        "icon_link": "../assets/Gastroenterology.svg",
+        "h3": "Gastroenterologie",
+        "p": "Umfassende Versorgung für die Verdauungsgesundheit, um Probleme präzise und individuell zu behandeln.",
+        "a": "Gesundheitsdienst anzeigen"
+      },
+      "2": {
+        "icon_link": "../assets/Cardiology.svg",
+        "h3": "Kardiologie",
+        "p": "Modernste Herzversorgung mit Fokus auf Ihre kardiovaskuläre Gesundheit, Fachwissen und Engagement.",
+        "a": "Gesundheitsdienst anzeigen"
+      },
+      "3": {
+        "icon_link": "../assets/Orthopedics.svg",
+        "h3": "Orthopädie",
+        "p": "Erhalten Sie Versorgung für Knochen- und Muskelgesundheit mit fortschrittlichen, auf Ihre Bedürfnisse zugeschnittenen Behandlungen.",
+        "a": "Gesundheitsdienst anzeigen"
+      },
+      "4": {
+        "icon_link": "../assets/Neurology.svg",
+        "h3": "Neurologie",
+        "p": "Spezialisierte Behandlungen für Gehirn- und Nerven-Gesundheit, immer mit fortschrittlicher und einfühlsamer Betreuung.",
+        "a": "Gesundheitsdienst anzeigen"
+      },
+      "5": {
+        "icon_link": "../assets/General-care.svg",
+        "h3": "Allgemeine Versorgung",
+        "p": "Zuverlässige primäre Gesundheitsdienste, die darauf ausgelegt sind, Ihr Wohlbefinden in jeder Lebensphase zu erhalten.",
+        "a": "Gesundheitsdienst anzeigen"
+      }
+    }
+  },
+  "footer": {
+    "p": "Versorgung finden"
+  }
+}

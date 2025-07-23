@@ -1,22 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface ClientLocation {
-  city: {
+export interface ClientIPLocation {
+  city?: {
     names: {
         en: string
     }
   }
   country: {
     iso_code: string
-    names: {
-      en: string
-    }
+    name_native: string
   }
-  ip: string;
-  location: {
+  ip?: string;
+  location?: {
     latitude: number;
     longitude: number;
   };
 }
+
+export type languageContent = {
+    language: string,
+    language_code: string
+}
+
+export type Language = languageContent[]
+
 
 export interface HealthcareProvider {
   properties: {

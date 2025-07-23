@@ -109,6 +109,9 @@ h3 {
   gap: 8px;
 }
 
+.d-country {
+  cursor: pointer;
+}
 .country img {
   position: relative;
   width: 20px;
@@ -128,6 +131,7 @@ h3 {
   border-radius: 4px;
   background-color: var(--White);
   border: 2px solid var(--FaD-color);
+  border-radius: 10px;
 }
 
 
@@ -151,8 +155,17 @@ h3 {
   border: 3px solid var(--FaD-color);
   font-weight: var(--Satoshi-Regular);
   font-size: 0.9rem;
-  background-color: var(--White);  
+  background-color: var(--White);
+  margin-bottom: 10px;
 }
+
+.ip-detect {
+  display: flex;
+  align-items: center;
+  gap: 10px ;
+  cursor: pointer;
+}
+
 
 .mobile-nav-toggle {
   display: none;
@@ -286,13 +299,40 @@ margin-block: 10px;
 
 .view-btn {
   display: flex;
- align-items: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+
+}
+
+.view-btn:hover {
+  animation-name: viewbtn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  color: var(--FaD-color);
+
+}
+/* view button animation */
+
+@keyframes viewbtn {
+   from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(8px);
+  }
 }
 
 .view-btn a {
   text-decoration: none;
   color: inherit;
+  font-size: 1rem;
+  font-weight: var(--Satoshi-medium);
+}
 
+.view-btn img {
+  width: 25px;
+  height: 25px;
 }
 
 .country-s {
@@ -334,7 +374,7 @@ h2 {
 }
 h3 {
   font-size:1.5rem ;
-  font-weight: var(--Satoshi-Regular);
+  font-weight: var(--Satoshi-medium);
 
 }
 

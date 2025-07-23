@@ -1,0 +1,63 @@
+{
+  "navbar": {
+    "find_clinics_navlink": "Trouver des cliniques",
+    "symptom_search_navlink": "Essayer la recherche de symptômes",
+    "client_country": ""
+  },
+  "hero-section": {
+    "find_clinic": {
+      "h1": "Nous vous aidons à trouver des soins",
+      "p": "Trouvez des médecins et des cliniques près de chez vous, avec des informations à jour et une intégration cartographique.",
+      "button_text": "Rechercher des cliniques"
+    },
+    "symptom_search": {
+      "h2": "Essayer la recherche de symptômes",
+      "p": "Saisissez vos principaux symptômes ou préoccupations et voyez comment l'IA suggère une spécialité et trouve instantanément le bon médecin ou la bonne clinique dans votre région.",
+      "button_text": "Essayez maintenant"
+    }
+  },
+  "specialties_section": {
+    "h3": "Trouver des services de santé à ",
+    "grid_layout": {
+      "0": {
+        "icon_link": "pediatrics.svg",
+        "h3": "Pédiatrie",
+        "p": "Surveillez de près la croissance et le développement de votre enfant pour garantir sa santé à chaque étape.",
+        "a": "Voir les soins de santé"
+      },
+      "1": {
+        "icon_link": "Gastroenterology.svg",
+        "h3": "Gastroentérologie",
+        "p": "Soins complets pour la santé digestive afin de traiter les problèmes avec précision et attention personnalisée.",
+        "a": "Voir les soins de santé"
+      },
+      "2": {
+        "icon_link": "Cardiology.svg",
+        "h3": "Cardiologie",
+        "p": "Soins cardiaques de pointe axés sur votre santé cardiovasculaire avec expertise et dévouement.",
+        "a": "Voir les soins de santé"
+      },
+      "3": {
+        "icon_link": "Orthopedics.svg",
+        "h3": "Orthopédie",
+        "p": "Recevez des soins pour la santé des os et des muscles avec des traitements avancés adaptés à vos besoins.",
+        "a": "Voir les soins de santé"
+      },
+      "4": {
+        "icon_link": "Neurology.svg",
+        "h3": "Neurologie",
+        "p": "Traitements spécialisés pour la santé du cerveau et des nerfs, garantissant toujours des soins avancés et compatissants.",
+        "a": "Voir les soins de santé"
+      },
+      "5": {
+        "icon_link": "General-care.svg",
+        "h3": "Soins généraux",
+        "p": "Services de soins de santé primaires fiables conçus pour maintenir votre bien-être à chaque étape de la vie.",
+        "a": "Voir les soins de santé"
+      }
+    }
+  },
+  "footer": {
+    "p": "Trouver des soins"
+  }
+}
