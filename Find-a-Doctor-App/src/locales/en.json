@@ -1,14 +1,18 @@
 {
   "navbar": {
-    "find_clinics_navlink": "Find Clinics",
+    "find_clinics_navlink": "Find Doctors",
     "symptom_search_navlink": "Try Symptom Search",
-    "client_country": ""
+    "language": {
+      "searchLang": "Search language",
+      "noLang": "No language found",
+      "myIP": "Use my location"
+    }
   },
   "hero-section": {
     "find_clinic": {
         "h1": "We Help You Find Care",
         "p": "Find doctors and clinics nearest to you, with up-to-date details and map integration.",
-        "button_text": "Search Clinics"
+        "button_text": "Find Doctors"
     },
     "symptom_search": {
         "h2": "Try Symptom Search",

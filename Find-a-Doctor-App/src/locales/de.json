@@ -2,8 +2,12 @@
   "navbar": {
     "find_clinics_navlink": "Kliniken finden",
     "symptom_search_navlink": "Symptom-Suche ausprobieren",
-    "client_country": ""
-  },
+    "language": {
+      "searchLang": "Sprache suchen",
+      "noLang": "Keine Sprache gefunden",
+      "myIP": "Meinen Standort verwenden"
+    }
+},
   "hero-section": {
     "find_clinic": {
       "h1": "Wir helfen Ihnen, die richtige Versorgung zu finden",

@@ -2,7 +2,11 @@
   "navbar": {
     "find_clinics_navlink": "查找诊所",
     "symptom_search_navlink": "尝试症状搜索",
-    "client_country": ""
+    "language": {
+      "searchLang": "搜索语言",
+      "noLang": "未找到语言",
+      "myIP": "使用我的位置"
+    }
   },
   "hero-section": {
     "find_clinic": {

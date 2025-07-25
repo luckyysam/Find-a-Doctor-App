@@ -5,6 +5,7 @@
     --Black-300-H: rgb(0, 0, 0);  
     --Black-200-P: rgb(74, 74, 72);
     --Black-100-P: rgb(94, 94, 94);
+    --Black-50-P: rgb(236, 233, 233);
     /* --Dark-blue: rgb(22, 32, 54);   */
     --Dark-blue: rgb(28, 39, 76);  
 
@@ -42,18 +43,26 @@ h3 {
 }
 
 #root {
-    max-inline-size: 1200px;
-    margin-inline: auto;
+  display: flex ;
+  flex-direction: column;
+  min-height: 100vh;
 } 
 
 
 
 /* NavBar */
-.container-nav {
+.nav-container {
+      border-bottom: 2px solid var(--Black-50-P);
+
+}
+
+.nav-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    max-width: 1200px;
+    margin-inline: auto;
 }
 
 .logo-nav-links {
@@ -111,6 +120,8 @@ h3 {
 
 .d-lang {
   cursor: pointer;
+  border-bottom: 2px solid var(--Black-50-P);
+
 }
 .language img {
   position: relative;
@@ -164,6 +175,8 @@ h3 {
   align-items: center;
   gap: 10px ;
   cursor: pointer;
+  border-bottom: 2px solid var(--Black-50-P);
+
 }
 
 
@@ -173,23 +186,25 @@ h3 {
 
 /* Hero Section */
 #hero-section {
-margin-block: 10px;
+  max-width: 1200px;
+  margin-inline: auto;
+  margin-block: 10px;
 }
 
-/* Find-Clinics */
-.find-clinic {
+/* find-doctors */
+.find-doctor {
   display: flex;
   gap: 32px;
   max-inline-size: 1120px;
 }
 
-.find-clinic img {
+.find-doctor img {
   display: block;
   object-position: center center;
   object-fit: cover;
 }
 
-.find-clinic-text {
+.find-doctor-text {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -203,12 +218,12 @@ margin-block: 10px;
 }
 
 
-.find-clinic-btn {
+.find-doctor-btn {
   display: flex;
   place-items: center;
   gap: 6px;
   width: fit-content;
-  padding-inline: 30px;
+  padding-inline: 20px;
   padding-block: 10px;
   border-radius: 20px;
   background-color: var(--White);
@@ -252,6 +267,8 @@ margin-block: 10px;
 /* Specialty Section */
 
 #specialties {
+  width: 1200px;
+  margin-inline: auto;
   margin-top: 30px;
 }
 
@@ -391,6 +408,9 @@ p {
   font-weight: var(--Satoshi-Regular);
 }
 
+button:hover {
+  cursor: pointer;
+}
 
 
 
@@ -404,7 +424,7 @@ p {
     padding-inline: 20px;
   }
 
-  .find-clinic img {
+  .find-doctor img {
     /* width: 349px; */
     height: 415px;
     border-radius: 10px;
@@ -432,6 +452,109 @@ p {
   }
 
 
+}
+
+
+/* FindADoctor Page */
+#search-clinics {
+  width: 1200px;
+  margin-inline: auto;
+  margin-top: 20px;
+
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.l-s-input {
+  display: flex;
+  gap: 5px ;
+  width: 700px;
+}
+
+.location-container {
+  width: 35%;
+}
+.specialty-container {
+  width: 65%;
+}
+
+.location-input {
+  width: -webkit-fill-available;
+  height: 40px;
+}
+
+.specialty-input {
+  width: -webkit-fill-available;
+  height: 40px;
+}
+
+.border-focus {
+  background: transparent;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: var(--Satoshi-medium);
+  padding: 12px;
+  color: rgba(0, 0, 0, 0.938);
+  border: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-color: rgb(38, 36, 36);
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 1px;
+}
+
+.border-focus:focus {
+  border-color: var(--FaD-color);
+  outline: none;
+}
+
+/* location input style */
+
+.autocompletes {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-bottom: 2px solid var(--Black-50-P);
+  cursor: pointer;
+
+ 
+}
+
+.autocompletes img {
+  width: 16px;
+  height: 16px;
+  border-bottom: 10px;
+}
+
+.autocomplete-results {
+  display: none;
+}
+
+
+.autocomplete-results.active {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 243px;
+  max-height: 320px;
+  margin-top: 10px;
+  border: 1px solid var(--FaD-color);
+  background-color: var(--White);
+  padding: 10px;
+  overflow-y: scroll;
 }
 
 
@@ -493,7 +616,7 @@ p {
   #hero-section {
     padding-inline: 40px;
   }
-  .find-clinic {
+  .find-doctor {
     flex-direction: column-reverse;
   }
 

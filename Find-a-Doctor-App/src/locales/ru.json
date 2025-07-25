@@ -2,7 +2,11 @@
   "navbar": {
     "find_clinics_navlink": "Найти клиники",
     "symptom_search_navlink": "Попробовать поиск по симптомам",
-    "client_country": ""
+    "language": {
+      "searchLang": "Поиск языка",
+      "noLang": "Язык не найден",
+      "myIP": "Использовать мое местоположение"
+    }
   },
   "hero-section": {
     "find_clinic": {

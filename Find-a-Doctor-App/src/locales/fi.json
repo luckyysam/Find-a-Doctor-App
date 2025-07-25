@@ -2,7 +2,11 @@
   "navbar": {
     "find_clinics_navlink": "Etsi klinikoita",
     "symptom_search_navlink": "Kokeile oirehakua",
-    "client_country": ""
+    "language": {
+      "searchLang": "Etsi kieli",
+      "noLang": "Kieltä ei löytynyt",
+      "myIP": "Käytä sijaintiani"
+    }
   },
   "hero-section": {
     "find_clinic": {

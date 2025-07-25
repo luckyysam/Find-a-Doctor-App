@@ -2,7 +2,11 @@
   "navbar": {
     "find_clinics_navlink": "クリニックを探す",
     "symptom_search_navlink": "症状検索を試す",
-    "client_country": ""
+    "language": {
+      "searchLang": "言語を検索",
+      "noLang": "言語が見つかりません",
+      "myIP": "自分の位置情報を使う"
+    }
   },
   "hero-section": {
     "find_clinic": {

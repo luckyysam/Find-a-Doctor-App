@@ -1,9 +1,0 @@
-
-
-
-const FindClinic = () => {
-
-
-  return <>
-  </>
-}

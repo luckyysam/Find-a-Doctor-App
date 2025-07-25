@@ -23,7 +23,6 @@ export type languageContent = {
 
 export type Language = languageContent[]
 
-
 export interface HealthcareProvider {
   properties: {
     name?: string;
@@ -87,4 +86,26 @@ export interface SpecialtyCardContent {
  h3:string
  p:string 
  a:string
+}
+
+export interface Location {
+  country: string
+  region: string
+  state: string
+  city: string
+  municipality: string
+  lon:number
+  lat:number
+  result_type: string
+  formatted: string
+  address_line1: string
+  address_line2: string
+  category: string
+  plus_code:string
+  plus_code_short:string
+  place_id: string
+}
+
+export interface AutoComplete {
+  results: Location[]
 }

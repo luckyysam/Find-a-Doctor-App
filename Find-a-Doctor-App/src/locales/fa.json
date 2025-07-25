@@ -2,7 +2,11 @@
   "navbar": {
     "find_clinics_navlink": "یافتن کلینیک‌ها",
     "symptom_search_navlink": "جستجوی علائم را امتحان کنید",
-    "client_country": ""
+    "language": {
+      "searchLang": "جستجوی زبان",
+      "noLang": "هیچ زبانی یافت نشد",
+      "myIP": "استفاده از موقعیت من"
+    }
   },
   "hero-section": {
     "find_clinic": {

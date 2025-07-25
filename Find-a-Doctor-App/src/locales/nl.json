@@ -2,7 +2,11 @@
   "navbar": {
     "find_clinics_navlink": "Vind Klinieken",
     "symptom_search_navlink": "Probeer Symptoomzoeker",
-    "client_country": ""
+    "language": {
+      "searchLang": "Taal zoeken",
+      "noLang": "Geen taal gevonden",
+      "myIP": "Gebruik mijn locatie"
+    }
   },
   "hero-section": {
     "find_clinic": {

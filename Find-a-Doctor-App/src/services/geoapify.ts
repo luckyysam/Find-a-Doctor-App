@@ -1,10 +1,17 @@
-import { type ClientIPLocation, type ProviderResults, type HealthcareProvider , type GeoapifyFeature} from "../types";
+import { 
+  type ClientIPLocation, 
+  type ProviderResults, 
+  type HealthcareProvider,
+  type GeoapifyFeature,
+  type AutoComplete
+} from "../types";
 
 const apiKey = import.meta.env.VITE_GEOAPIFY_TOKEN;
 
 const endpoints = {
   ipGeo: import.meta.env.VITE_GEOAPIFY_IP_GEOLOCATION_API, 
   places: import.meta.env.VITE_GEOAPIFY_PLACES_API,
+  autoComplete: import.meta.env.VITE_GEOAPIFY_AUTOCOMPLETE_API
 };
 
 
@@ -108,3 +115,19 @@ export const getHealthcareProviders = async (
 
   // return res.json();
 };
+
+export const getAutoComplete = async ( location: string ): Promise<AutoComplete>   => {
+  
+  if (!location.trim()) throw new Error('Provide a text')
+  
+  const url = `${endpoints.autoComplete}text=${location}&format=json&apiKey=${apiKey}`
+
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {'Content-Type': 'Application/json'}
+  })
+  if(!res.ok) throw new Error('AutoComplete Failed')
+  
+  const data = await res.json()
+  return data as unknown as AutoComplete
+}
