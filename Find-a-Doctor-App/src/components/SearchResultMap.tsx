@@ -146,6 +146,7 @@ const SearchResultMap = () => {
               <ClinicsAndHospitals/>
               <ClinicsAndHospitals/>
               <ClinicsAndHospitals/>
+              <ClinicsAndHospitals/>
             </div>
 
             <div className="map-geoapify">

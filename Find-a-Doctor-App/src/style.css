@@ -426,7 +426,34 @@ button:hover {
 
 }
 
+.color-fad {
+  color:  var(--FaD-color);
+}
 
+.flex-gap {
+  display: flex;
+  align-items: flex-start;
+  gap: 3px;
+}
+.center {
+  align-items: center;
+}
+
+.flex-gap img {
+  width: 20px;
+  height: 20px;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+.text-medium {
+  font-size: 1.35rem;
+}
+.font-medium {
+  font-weight: var(--Satoshi-medium);
+}
 
 
 /* Tablet View 1199 - 810*/
@@ -471,7 +498,7 @@ button:hover {
 
 /* FindADoctor Page */
 #FindADoctor {
-  width: 1200px;
+  width: 1300px;
   margin-inline: auto;
   margin-top: 20px;
 
@@ -584,13 +611,16 @@ button:hover {
 
 .result-map {
   display: flex;
-  /* gap: 10px; */
+  gap: 10px;
+  max-height:1000px;
 
 }
 
 
 .results {
-  width: 25%
+  width: 25%;
+  
+  overflow-y: scroll;
 }
 .map-geoapify {
   width: 50%;
@@ -607,23 +637,65 @@ button:hover {
 .cl-container {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   cursor: pointer;
+  border-bottom: 2px solid var(--Black-50-P);
+  margin-bottom: 5px;
 }
 
 .web-dir{
+  display: flex;
+  gap: 10px;
   margin-top: 10px;
+  background-color: var(--FaD-color);
+  width: fit-content;
+  color: var(--White);
+  padding: 8px;
+
+}
+.svg-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: rgb(15, 209, 193);
+  border-radius: 20px;
+}
+.svg-wrapper img {
+  width: 25px;
+  height: 25px;
 }
 
+.website,
+.direction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 /* ClinicsDetails style */
 .view-detials {
-  width: 25%
+  width: 30%
 }
 .cd-container {
   display: flex;
   flex-direction: column;
+  gap: 3px;
+  border: 3px solid var(--FaD-color);
+  border-radius: 10px;
+  padding: 10px;
+
+}
+
+.address,
+.phone,
+.email {
+  display: flex;
+  align-items: center;
+  gap: 3px;
 
 }
 
