@@ -109,3 +109,15 @@ export interface Location {
 export interface AutoComplete {
   results: Location[]
 }
+
+export interface FaDSpecialties {
+  "healthcare.clinic_or_praxis": string[],
+  "healthcare.dentist": string[],
+  "healthcare": string[]
+}
+
+
+export interface LatLon {
+    lon?: number
+    lat?: number
+}

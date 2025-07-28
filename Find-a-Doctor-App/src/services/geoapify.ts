@@ -27,9 +27,6 @@ export const getClientLocation = async (): Promise<ClientIPLocation> => {
   if (!res.ok) throw new Error("IP Geolocation failed");
 
   const data = await res.json();
-
-  console.log('DATA', data)
-
   return {
     city: {
       names: {
@@ -57,11 +54,10 @@ export const getHealthcareProviders = async (
   lon: number,
   radius: number = 10000 // default 10km
 ): Promise<ProviderResults> => {
-  const category = `healthcare.${specialty}`;
   const filter = `circle:${lon},${lat},${radius}`;
-  const limit = 500;
+  const limit = 100;
 
-  const url = `${endpoints.places}categories=${category}&filter=${filter}&limit=${limit}&apiKey=${apiKey}`;
+  const url = `${endpoints.places}categories=${specialty}&filter=${filter}&limit=${limit}&apiKey=${apiKey}`;
 
   const res = await fetch(url, {
     method: "GET",

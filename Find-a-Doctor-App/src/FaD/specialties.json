@@ -1,0 +1,6 @@
+{
+    "healthcare.clinic_or_praxis":[ "allergology", "vascular_surgery", "urology", "trauma", "rheumatology", "radiology", "pulmonology", "psychiatry", "paediatrics", "otolaryngology", "orthopaedics", "ophthalmology", "occupational", "gynaecology", "general", "gastroenterology", "endocrinology", "dermatology", "cardiology"
+    ],
+    "healthcare.dentist":[ "orthodontics"],
+    "healthcare": [ "dentist", "hospital", "pharmacy"]
+}
