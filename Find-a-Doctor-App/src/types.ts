@@ -115,9 +115,3 @@ export interface FaDSpecialties {
   "healthcare.dentist": string[],
   "healthcare": string[]
 }
-
-
-export interface LatLon {
-    lon?: number
-    lat?: number
-}

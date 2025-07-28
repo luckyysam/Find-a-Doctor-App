@@ -168,11 +168,9 @@ const AllHealthcareProviders = ({ provider }: providerProps) => {
                 <p className="font-medium">Website</p>
               </div>
               <div className="direction">
-                <a href="">
-                  <div className="svg-wrapper">
-                    <img src={arrowRight} alt="" />
-                  </div>
-                </a>
+                <div className="svg-wrapper">
+                  <img src={arrowRight} alt="" />
+                </div>
                 <p className="font-medium">Direction</p>
               </div>
             </div>

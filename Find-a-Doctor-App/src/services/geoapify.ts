@@ -3,7 +3,8 @@ import {
   type ProviderResults, 
   type HealthcareProvider,
   type GeoapifyFeature,
-  type AutoComplete
+  type AutoComplete,
+  type Location
 } from "../types";
 
 const apiKey = import.meta.env.VITE_GEOAPIFY_TOKEN;
@@ -11,7 +12,8 @@ const apiKey = import.meta.env.VITE_GEOAPIFY_TOKEN;
 const endpoints = {
   ipGeo: import.meta.env.VITE_GEOAPIFY_IP_GEOLOCATION_API, 
   places: import.meta.env.VITE_GEOAPIFY_PLACES_API,
-  autoComplete: import.meta.env.VITE_GEOAPIFY_AUTOCOMPLETE_API
+  autoComplete: import.meta.env.VITE_GEOAPIFY_AUTOCOMPLETE_API,
+  geocodeAPI: import.meta.env.VITE_GEOAPIFY_GEOCODING_API,
 };
 
 
@@ -122,8 +124,30 @@ export const getAutoComplete = async ( location: string ): Promise<AutoComplete>
     method: 'GET',
     headers: {'Content-Type': 'Application/json'}
   })
-  if(!res.ok) throw new Error('AutoComplete Failed')
+  if(!res.ok) throw new Error('AutoComplete API Failed')
   
   const data = await res.json()
   return data as unknown as AutoComplete
+}
+
+export const getGeocodedLocation  = async (location : string): Promise<Location> => {
+
+  if (!location.trim()) throw new Error('Provide a text')
+
+  const url = `${endpoints.geocodeAPI}${location}&format=json&apiKey=${apiKey}`
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {'Content-Type': 'Application/json'}
+  })
+
+  if(!res.ok) throw new Error('Geocoding API Failed')
+  
+  const data = await res.json()
+  delete data['results'][0].datasource
+  delete data['results'][0].bbox
+  delete data['results'][0].rank
+  delete data['results'][0].timezone
+
+  return data['results'][0] as Location
+
 }

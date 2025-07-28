@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useContext } from "react"
 import { LocationContext } from "../context/LocationContext";
 import { getAutoComplete } from "../services/geoapify"
 import AllHealthcareProviders from "./AllHealthcareProviders"
-import { getHealthcareProviders } from "../services/geoapify";
+import { getHealthcareProviders, getGeocodedLocation } from "../services/geoapify";
 
 import { type AutoComplete, type Location, type FaDSpecialties, type ProviderResults } from "../types"
 
@@ -133,6 +133,29 @@ const SearchResultMap = () => {
       getProviders(specialtyLink, userLocation?.location?.latitude, userLocation?.location?.longitude)
     }
   }, [specialtyLink, location, userLocation, InputValue])
+
+
+  // User types in the input form but did not select from autocomplete suggestion 
+  useEffect(() => {
+    if (!locationInputRef.current) return
+
+    const geocodeInput = async () => {
+      if (InputValue){
+        const location = await getGeocodedLocation(InputValue)
+        setLocation(location)
+      }
+    }
+    
+    if (
+      locationInputRef.current && 
+      locationInputRef.current.value.trim() !=="" && 
+      autoCompletes && 
+      !location
+    ){
+      geocodeInput()
+    }
+
+  }, [InputValue, autoCompletes, location])
 
   const handleSetLocation = (location: Location) => {
     setLocation(location)
