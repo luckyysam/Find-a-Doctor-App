@@ -102,12 +102,22 @@ const AllHealthcareProviders = ({ provider }: providerProps) => {
               </p>
 
               <div className="web-dir">
+
                 <div className="website">
-                  <div className="svg-wrapper">
-                    <img src={globe} alt="" />
-                  </div>
-                  <p className="font-medium">{healthcare.properties.website}</p>
+
+                  <a 
+                    href={healthcare.properties.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="svg-wrapper">
+                      <img src={globe} alt="" />
+                    </div>
+                  </a>
+                  <p className="font-medium"> Website</p>
+                  
                 </div>
+
                 <div className="direction">
                   <div className="svg-wrapper">
                     <img src={arrowRight} alt="" />

@@ -18,7 +18,7 @@ const SearchResultMap = () => {
   const [locationInput, setLocationInput] = useState<string>('')
   const [autoCompletes, setAutoCompletes] = useState<AutoComplete | null> (null)
   const [sepcialty, setSpecialty] = useState<string>('')
-  const [ InputValue , setInputValue ] = useState<string>('')
+  const [InputValue , setInputValue ] = useState<string>('')
 
   const locationInputRef = useRef<HTMLInputElement>(null)
   const autoCompleteRef = useRef<HTMLInputElement>(null)
@@ -28,6 +28,8 @@ const SearchResultMap = () => {
   // Get user lat and lon from thier IP to find healthcare providers in the area
   const [placeholderValue, setPlaceholderValue] = useState<string>('')
   const userLocation = useContext(LocationContext)
+
+  // Set Location Input placeholder value with ClientIPLocation city name 
   useEffect(() => {
     if (userLocation?.city) {
       setPlaceholderValue(userLocation?.city?.names.en)
@@ -35,6 +37,7 @@ const SearchResultMap = () => {
 
     return () => setInputValue('')
   },[userLocation])
+
 
   //  Auto complete suggestions for location input
   useEffect(() => {
@@ -123,16 +126,18 @@ const SearchResultMap = () => {
       setHealthCareProviders(res)
     }
 
-    if (userLocation?.location && specialtyLink) {
+    if (location && specialtyLink) {
+      getProviders(specialtyLink, location.lat, location.lon)
+    }
+    if(!InputValue && userLocation?.location && specialtyLink) {
       getProviders(specialtyLink, userLocation?.location?.latitude, userLocation?.location?.longitude)
     }
-  }, [specialtyLink, userLocation])
+  }, [specialtyLink, location, userLocation, InputValue])
 
   const handleSetLocation = (location: Location) => {
     setLocation(location)
     setInputValue(location.formatted)
     document.querySelector('.autocomplete-results')?.classList.remove('active')
-
   }
 
 
