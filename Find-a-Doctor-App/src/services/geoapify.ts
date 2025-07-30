@@ -54,11 +54,11 @@ export const getHealthcareProviders = async (
   specialty: string,
   lat: number,
   lon: number,
+  locationInputValue: string,
   radius: number = 10000 // default 10km
 ): Promise<ProviderResults> => {
   const filter = `circle:${lon},${lat},${radius}`;
   const limit = 100;
-
   const url = `${endpoints.places}categories=${specialty}&filter=${filter}&limit=${limit}&apiKey=${apiKey}`;
 
   const res = await fetch(url, {
@@ -107,16 +107,18 @@ export const getHealthcareProviders = async (
       coordinates: healthcare.geometry?.coordinates,
     }
   }));
-  // console.log('HEALTHCARE PROVIDERS', HealthcareProviders)
 
-  return { HealthcareProviders };
+  const arr = specialty.split(".")
+  const specialtyType = arr[arr.length-1]
 
-  // return res.json();
+
+  return { HealthcareProviders, specialty:specialtyType.slice(0,1).toUpperCase().concat(specialtyType.slice(1)), location: [lat, lon], locationInputValue  };
+
 };
 
 export const getAutoComplete = async ( location: string ): Promise<AutoComplete>   => {
   
-  if (!location.trim()) throw new Error('Provide a text')
+  if (!location.trim()) throw new Error('Provide a location')
   
   const url = `${endpoints.autoComplete}text=${location}&format=json&apiKey=${apiKey}`
 

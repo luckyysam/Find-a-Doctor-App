@@ -4,28 +4,30 @@ import { getAutoComplete } from "../services/geoapify"
 import AllHealthcareProviders from "./AllHealthcareProviders"
 import { getHealthcareProviders, getGeocodedLocation } from "../services/geoapify";
 
-import { type AutoComplete, type Location, type FaDSpecialties, type ProviderResults } from "../types"
+import { type AutoComplete, type Location, type FaDSpecialties, type ProviderResults, type ClientIPLocation } from "../types"
+import { isLocationTypeClientIPLocation, isLocationTypeLocation } from "../util/typeChecker";
 
 import 'maplibre-gl/dist/maplibre-gl.css';
 import speciatiesJson from '../FaD/specialties.json'
 import mapPin  from '../assets/map-pin.svg'
 import magnifyingGlassIcon from '../assets/magnifying-glass.svg'
+import circleNotch from '../assets/circle-notch.svg'
 
 
 const SearchResultMap = () => {
 
-  const [location, setLocation] = useState<Location | null>(null)
-  const [locationInput, setLocationInput] = useState<string>('')
+  const [location, setLocation] = useState<Location | ClientIPLocation |  null>(null)
   const [autoCompletes, setAutoCompletes] = useState<AutoComplete | null> (null)
-  const [sepcialty, setSpecialty] = useState<string>('')
-  const [InputValue , setInputValue ] = useState<string>('')
+  const [specialty, setSpecialty] = useState<string>('')
+  const [locationInputValue , setLocationInputValue ] = useState<string>('')
+  const [isSuggestionIgnored, setIsSuggestionIgnored] = useState<boolean>(false)  // Know if autocomplete suggestions is closed
 
   const locationInputRef = useRef<HTMLInputElement>(null)
   const autoCompleteRef = useRef<HTMLInputElement>(null)
   const specialtyInputRef = useRef<HTMLInputElement>(null)
   const specialtyListRef = useRef<HTMLDivElement>(null)
 
-  // Get user lat and lon from thier IP to find healthcare providers in the area
+  // Get user latitude and longitude from thier IP to find healthcare providers in the area
   const [placeholderValue, setPlaceholderValue] = useState<string>('')
   const userLocation = useContext(LocationContext)
 
@@ -35,23 +37,24 @@ const SearchResultMap = () => {
       setPlaceholderValue(userLocation?.city?.names.en)
     }
 
-    return () => setInputValue('')
+    return () => setLocationInputValue('')
   },[userLocation])
-
 
   //  Auto complete suggestions for location input
   useEffect(() => {
     const autoComplete = async (location: string) => {
-      const autoCompletes = await getAutoComplete(location)
-      document.querySelector('.autocomplete-results')?.classList.add('active')
-      setAutoCompletes(autoCompletes)
+      // if autocomplete and location and autoCompleteRef is closed,  return 
+      if (autoCompletes && location && !autoCompleteRef.current?.classList.contains('active')) return 
+      const autoCompletesSuggestion  = await getAutoComplete(location)
+      setAutoCompletes(autoCompletesSuggestion)
     }
-    if (locationInput) {
-      const timeoutId = setTimeout(autoComplete, 2000, locationInput)
+    
+    if (locationInputValue) {
+      const timeoutId = setTimeout(autoComplete, 2000, locationInputValue)
       return () => clearTimeout(timeoutId)
     }
 
-  }, [locationInput])
+  }, [autoCompletes, locationInputValue])
 
   // Close location dropdown 
   useEffect(() => {
@@ -63,14 +66,18 @@ const SearchResultMap = () => {
         (specialtyInputRef && specialtyInputRef.current?.contains(event.target as Node))
 
       ) {
-        document.querySelector('.autocomplete-results')?.classList.remove('active')
+        autoCompleteRef.current?.classList.remove('active')
+        if (autoCompletes) {
+          setIsSuggestionIgnored(true)
+        }
+
       }
     }
     document.addEventListener('mousedown', handleCloseLocationInput)
     return () => {
       document.removeEventListener('mousedown', handleCloseLocationInput)
     }
-  }, [])
+  }, [autoCompletes])
     
   // Open Specialty lists when user click on the input
   const specialties : FaDSpecialties = speciatiesJson
@@ -112,68 +119,101 @@ const SearchResultMap = () => {
 
 
   const [specialtyLink, setSpecialtyLink] = useState<string>('')
-  const handleSpecialtySelect = (type: string, specialty: string) => {
+  const handleSpecialtySelect = (type: string, specialtyType: string) => {
     specialtyListRef.current?.classList.remove('active')
-    setSpecialty(specialty)
-    setSpecialtyLink(`${type}.${specialty}`)
+    if (specialtyType !== specialty ) {
+      setSpecialty(specialtyType)
+      setSpecialtyLink(`${type}.${specialtyType}`)
+      setHealthCareProviders(null)
+    }
   }
 
   // Fetch Healthcare Providers when user Selects sepecialty
-  const [healthCareProviders, setHealthCareProviders] = useState<ProviderResults>()
+  const [fetchingProviders, setFetchingProviders ] = useState<boolean>(false)
+  const [healthCareProviders, setHealthCareProviders] = useState<ProviderResults | null>(null)
   useEffect(() => {
-    const getProviders = async (specialty: string, lat: number, lon: number) => {
-      const res = await getHealthcareProviders(specialty, lat, lon)
+    const getProviders = async (specialty: string, lat: number, lon: number, locationInputValue: string) => {
+      setFetchingProviders(true)
+      const res = await getHealthcareProviders(specialty, lat, lon, locationInputValue)
       setHealthCareProviders(res)
+      setFetchingProviders(false)
     }
 
-    if (location && specialtyLink) {
-      getProviders(specialtyLink, location.lat, location.lon)
+    if ( location && specialtyLink ) {
+      // If current location and specialty is the same as previously queried, Don't fetch
+      // Compares latitude, longitude and specialty
+
+      if (isLocationTypeClientIPLocation(location) && location.location?.latitude) {
+        const latlonIsSame = (location.location?.latitude === healthCareProviders?.location[0] || location.location?.longitude === healthCareProviders?.location[1])
+        const specialtyIsSame = (healthCareProviders?.specialty !== specialty)
+
+        if ( !latlonIsSame || !specialtyIsSame) {
+          getProviders(specialtyLink, location.location?.latitude, location.location?.longitude, locationInputValue )
+        }
+      }
+
+      if (isLocationTypeLocation(location)) {
+        const latlonIsSame = (location.lat === healthCareProviders?.location[0] || location.lon === healthCareProviders?.location[1])
+        const specialtyIsSame = (healthCareProviders?.specialty !== specialty)
+
+        if ( !latlonIsSame || !specialtyIsSame) {
+          getProviders(specialtyLink, location.lat, location.lon, locationInputValue )
+        }
+      }
     }
-    if(!InputValue && userLocation?.location && specialtyLink) {
-      getProviders(specialtyLink, userLocation?.location?.latitude, userLocation?.location?.longitude)
-    }
-  }, [specialtyLink, location, userLocation, InputValue])
+  }, [location, specialtyLink, healthCareProviders, specialty, locationInputValue, userLocation ])
 
 
-  // User types in the input form but did not select from autocomplete suggestion 
+  // User types in the location and ignores autocomplete suggestion 
   useEffect(() => {
     if (!locationInputRef.current) return
 
     const geocodeInput = async () => {
-      if (InputValue){
-        const location = await getGeocodedLocation(InputValue)
+      if (locationInputValue){
+        const location = await getGeocodedLocation(locationInputValue)
         setLocation(location)
       }
     }
-    
+
     if (
       locationInputRef.current && 
       locationInputRef.current.value.trim() !=="" && 
       autoCompletes && 
-      !location
+      (location === null) && (isSuggestionIgnored === true)
     ){
       geocodeInput()
     }
 
-  }, [InputValue, autoCompletes, location])
+  }, [locationInputValue, autoCompletes, location, isSuggestionIgnored])
+
 
   const handleSetLocation = (location: Location) => {
+    if (healthCareProviders) {
+      setHealthCareProviders(null)
+    }
     setLocation(location)
-    setInputValue(location.formatted)
-    document.querySelector('.autocomplete-results')?.classList.remove('active')
+    setLocationInputValue(location.formatted)
+    autoCompleteRef.current?.classList.remove('active')
   }
 
 
-  const handleInputAndSearch = (e: string) => {
-    setInputValue(e)
-    setLocationInput(e)
+  const handleUseMyLocation = () => {
+    setLocation(userLocation)
+    setLocationInputValue(placeholderValue)
+    autoCompleteRef.current?.classList.remove('active')
+  }
+
+  const handleLocationInput = (e: string) => {
+    setLocationInputValue(e)
+    setLocation(null)
+    setAutoCompletes(null)
+    setIsSuggestionIgnored(false)
   }
 
   // Open previous autoComplete suggestions when dropdown closes and user clicks on the location input the second time
   const openAutoCompleteSuggestions = () => {
-    if (autoCompletes) {
-      document.querySelector('.autocomplete-results')?.classList.add('active')
-    }
+    autoCompleteRef.current?.classList.add('active')
+
   }
 
   return (
@@ -189,13 +229,17 @@ const SearchResultMap = () => {
                 type="text " 
                 placeholder={placeholderValue}
                 className="location-input"
-                value={InputValue}
-                onChange={(e) => handleInputAndSearch(e.target.value)}
+                value={locationInputValue}
+                onChange={(e) => handleLocationInput(e.target.value)}
                 onClick={openAutoCompleteSuggestions}
               />
 
             </div>
             <div className="autocomplete-results" ref={autoCompleteRef}>
+              <div className="autocompletes" onClick={handleUseMyLocation}>
+                <img src={mapPin} alt="map pin" />
+                <p>Use my location</p>
+              </div>
               {
                 autoCompletes && autoCompletes['results'].map((autoComplete, idx) => {
                   return (
@@ -215,7 +259,7 @@ const SearchResultMap = () => {
               ref={specialtyInputRef}
               type="text" 
               placeholder="Search doctors, clinics, hospitals, etc." className="specialty-input border-focus"
-              value={sepcialty}
+              value={specialty}
               onChange={(e) => setSpecialty(e.target.value)}
             />
             
@@ -238,14 +282,23 @@ const SearchResultMap = () => {
 
           </div>
         </div>
+        
+        { fetchingProviders && (   
+          <div className="loading-container">
+            <img src={circleNotch} alt="" className="spinner" />
+          </div>)
+        }
 
-        { healthCareProviders && (
+        { healthCareProviders && location && (
           <div className="srm-results">
-            <h2 className="result-heading">Nearby {sepcialty} Clinics & Hospitals</h2>
-
-            <div className="result-map">
-              <AllHealthcareProviders provider={healthCareProviders['HealthcareProviders']}  />
-            </div>
+            <h2 className="result-heading">Nearby {healthCareProviders.specialty} in { healthCareProviders.locationInputValue}</h2>
+            { healthCareProviders.HealthcareProviders.length > 0 ?
+              <div className="result-map">
+                <AllHealthcareProviders provider={healthCareProviders['HealthcareProviders']} location={location} />
+              </div>
+              : <p style={{ textAlign: "center"}}>No Providers</p>
+            }
+            
           </div>
         )} 
       </div>

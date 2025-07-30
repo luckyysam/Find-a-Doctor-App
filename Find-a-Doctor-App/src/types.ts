@@ -62,6 +62,9 @@ export interface HealthcareProvider {
 
 export interface ProviderResults {
   HealthcareProviders: HealthcareProvider[];
+  specialty: string
+  location: number[]
+  locationInputValue: string
 }
 
 export interface GeoapifyFeature {
