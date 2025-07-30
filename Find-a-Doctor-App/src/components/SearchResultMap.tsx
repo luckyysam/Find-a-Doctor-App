@@ -5,7 +5,7 @@ import AllHealthcareProviders from "./AllHealthcareProviders"
 import { getHealthcareProviders, getGeocodedLocation } from "../services/geoapify";
 
 import { type AutoComplete, type Location, type FaDSpecialties, type ProviderResults, type ClientIPLocation } from "../types"
-import { isLocationTypeClientIPLocation, isLocationTypeLocation } from "../util/typeChecker";
+import { isLocationTypeClientIPLocation, isLocationTypeLocation } from "../utils/typeChecker";
 
 import 'maplibre-gl/dist/maplibre-gl.css';
 import speciatiesJson from '../FaD/specialties.json'
@@ -227,7 +227,7 @@ const SearchResultMap = () => {
               <input 
                 ref={locationInputRef}
                 type="text " 
-                placeholder={placeholderValue}
+                placeholder={ "e.g " + placeholderValue}
                 className="location-input"
                 value={locationInputValue}
                 onChange={(e) => handleLocationInput(e.target.value)}

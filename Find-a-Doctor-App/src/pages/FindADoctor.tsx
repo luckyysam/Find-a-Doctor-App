@@ -4,7 +4,7 @@ const FindADoctor = () => {
  
   return (
     <>
-      <section id="FindADoctor">
+      <section id="find-a-doctor">
         <h1 className="heading-text">Find Clinics, Hospitals Near You</h1>
         <SearchResultMap/>
       </section>

@@ -3,7 +3,7 @@ import { type HealthcareProvider, type ClientIPLocation, type Location } from ".
 import maplibregl from 'maplibre-gl';
 import { getProviderWebsiteScreenShot } from '../services/microlink'
 
-import { isLocationTypeClientIPLocation, isLocationTypeLocation } from "../util/typeChecker";
+import { isLocationTypeClientIPLocation, isLocationTypeLocation } from "../utils/typeChecker";
 
 import mapPin from "../assets/map-pin (2).svg"
 import phone from "../assets/phone.svg"

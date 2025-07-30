@@ -362,6 +362,123 @@ h3 {
 
 
 
+/* SymptomSearch Component style */
+
+.chat-container {
+  margin-block: 30px;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.form-container.remove {
+  display: none;
+}
+
+.form-container {
+  width: 702px;
+}
+
+.user-input {
+  display:  flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.symptom-input:focus{
+  border: 1px solid var(--FaD-color);
+  outline: none;
+}
+.symptom-input {
+  padding-inline: 12px;
+  padding-block: 25px;
+  border-radius: 10px;
+  background: rgba(187, 187, 187, 0.15);
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 0.9rem;
+  font-weight: var(--Satoshi-medium);
+  width: -webkit-fill-available;;
+}
+
+.user-input button {
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--White);
+  background-color: var(--FaD-color);
+  border: none;
+  font-size: 0.99rem;
+  font-weight: 600;
+  width: -webkit-fill-available;;
+}
+
+.ai-response {
+  display: none;
+}
+
+
+.ai-response.show {
+  display:  flex;
+  gap: 5px;
+  margin-top: 10px;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--FaD-color);
+  width: 800px;
+}
+
+.user-s {
+  border: 1px solid var(--Black-300-H);
+  padding: 10px;
+  border-radius: 10px;
+  width: fit-content;
+  align-self: flex-start;
+
+}
+
+.ai-resp {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  max-inline-size:500px ;
+  align-self: flex-end;
+  background-color: var(--FaD-color);
+  color: var(--White);
+}
+
+.user-message-bottom {
+ display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.message-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--FaD-color);
+  padding: 10px;
+  
+}
+
+.user-message {
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--FaD-color);
+  border: none;
+  /* background: rgba(187, 187, 187, 0.15); */
+
+}
+
+.user-message:focus {
+  border: none;
+  outline: none;
+}
+
+
 /* Footer */
 
 .f-container {
@@ -421,6 +538,11 @@ button:hover {
   font-weight: var(--Satoshi-Regular);
   text-align: center;
 
+}
+.s-description {
+  color: rgb(153, 153, 153);
+  text-align: center;
+  font-weight: var(--Satoshi-medium);
 }
 
 .result-heading {
@@ -502,7 +624,8 @@ button:hover {
 
 
 /* FindADoctor Page */
-#FindADoctor {
+#find-a-doctor,
+#symptom-search {
   width: 1300px;
   margin-inline: auto;
   margin-top: 20px;
